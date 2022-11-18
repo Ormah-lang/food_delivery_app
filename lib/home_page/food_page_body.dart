@@ -1,7 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/utilities/colors.dart';
+import 'package:food_delivery_app/utilities/dimensions.dart';
 import 'package:food_delivery_app/widgets/big_text.dart';
 import 'package:food_delivery_app/widgets/icon_and_text.dart';
 import 'package:food_delivery_app/widgets/small_text.dart';
@@ -18,8 +18,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   //initial value of the current page
   var _currPageValue = 0.0;
   //initial value of the scale factor
-  double _scaleFactor = 0.8;
-  double _height = 220;
+  final double _scaleFactor = 0.8;
+  final double _height = Dimensions.pageViewContainer;
   @override
   void initState() {
     super.initState();
@@ -40,9 +40,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //slider section
         Container(
           // color: Colors.red,
-          height: 320,
+          height: Dimensions.pageView,
           child: PageView.builder(
               controller: pageController,
               itemCount: 5,
@@ -50,7 +51,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 return _buildPageItem(position);
               }),
         ),
-        new DotsIndicator(
+        //dots section
+        DotsIndicator(
           dotsCount: 5,
           position: _currPageValue,
           decorator: DotsDecorator(
@@ -87,10 +89,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       transform: matrix,
       child: Stack(children: [
         Container(
-          height: 220,
-          margin: const EdgeInsets.only(left: 10, right: 10),
+          height: Dimensions.pageViewContainer,
+          margin: EdgeInsets.only(
+              left: Dimensions.width10, right: Dimensions.width10),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(Dimensions.radius30),
             color: index.isEven
                 ? const Color(0xFFCD5700)
                 : const Color(0xFF9294cc),
@@ -103,10 +106,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 120,
-            margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+            height: Dimensions.pageViewTextContainer,
+            margin: EdgeInsets.only(
+              left: Dimensions.width30,
+              right: Dimensions.width30,
+              bottom: Dimensions.height30,
+            ),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
@@ -123,23 +130,20 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     offset: Offset(5, 0),
                   )
                 ]),
-            child: Container(
-                padding: const EdgeInsets.only(
-                  top: 10,
-                  left: 15,
-                  right: 15,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BigText(
-                      text: 'Jollof Rice',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: Dimensions.height15, left: 15, right: 15, bottom: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BigText(
+                    text: 'Jollof Rice',
+                  ),
+                  SizedBox(height: Dimensions.height10),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Wrap(
                           spacing: -2,
@@ -148,30 +152,30 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                               (index) => Icon(
                                     Icons.star,
                                     color: AppColors.mainColor,
-                                    size: 16.0,
+                                    size: Dimensions.iconSize15,
                                   )),
                         ),
                         SizedBox(
-                          width: 5,
+                          width: Dimensions.width10 / 2,
                         ),
                         SmallText(text: '4.5'),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        SmallText(
-                          text: '1,287',
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        SmallText(
-                          text: 'comments',
+                        SizedBox(width: Dimensions.width10),
+                        SmallText(text: '1287'),
+                        SizedBox(width: 1),
+                        Expanded(
+                          child: SmallText(
+                            text: 'comments',
+                          ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 5.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  ),
+                  SizedBox(height: Dimensions.height20),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         IconAndText(
                             icon: Icons.circle_sharp,
@@ -186,11 +190,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                             text: '32min',
                             iconColor: AppColors.iconColor2),
                       ],
-                    )
-                  ],
-                )),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        )
+        ),
       ]),
     );
   }
