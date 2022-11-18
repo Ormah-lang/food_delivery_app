@@ -5,11 +5,13 @@ class SmallText extends StatelessWidget {
   final String text;
   double size;
   double height;
+  TextOverflow overFlow;
 
   SmallText(
       {Key? key,
       this.height = 1.2,
       this.color = const Color(0xFFccc7c5),
+      this.overFlow = TextOverflow.ellipsis,
       required this.text,
       this.size = 12})
       : super(key: key);
@@ -18,12 +20,14 @@ class SmallText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      maxLines: 1,
       style: TextStyle(
         color: color,
         fontFamily: 'Roboto',
         fontSize: size,
         height: height,
       ),
+      overflow: overFlow,
     );
   }
 }

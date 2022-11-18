@@ -51,6 +51,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 return _buildPageItem(position);
               }),
         ),
+
         //dots section
         DotsIndicator(
           dotsCount: 5,
@@ -58,6 +59,126 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           decorator: DotsDecorator(
             color: Colors.black87, // Inactive color
             activeColor: AppColors.mainColor,
+          ),
+        ),
+
+        // popular text
+        SizedBox(
+          height: Dimensions.height30,
+        ),
+        Container(
+          margin: EdgeInsets.only(
+            left: Dimensions.width30,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(
+                text: 'Popular',
+              ),
+              SizedBox(
+                width: Dimensions.width10,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 3),
+                child: BigText(
+                  text: '.',
+                  color: Colors.black26,
+                ),
+              ),
+              SizedBox(
+                width: Dimensions.width10,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 2),
+                child: SmallText(
+                  text: 'Food pairing',
+                ),
+              )
+            ],
+          ),
+        ),
+
+        //list of food image and text description
+        ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: 10,
+          itemBuilder: (context, index) => Container(
+            margin: EdgeInsets.only(
+              left: Dimensions.width20,
+              right: Dimensions.width20,
+              bottom: Dimensions.height10,
+            ),
+            child: Row(
+              children: [
+                //image section
+                Container(
+                  width: Dimensions.listViewImgSize,
+                  height: Dimensions.listViewImgSize,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color: Colors.white,
+                    image: DecorationImage(
+                        image: AssetImage('assets/image/jollof_rice.png')),
+                  ),
+                ),
+
+                //  text container
+                Expanded(
+                  child: Container(
+                    height: Dimensions.listViewTextContSize,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(Dimensions.radius20),
+                          bottomRight: Radius.circular(Dimensions.radius20),
+                        ),
+                        color: Colors.white),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: Dimensions.width10,
+                        right: Dimensions.width10,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: Dimensions.height10,
+                          ),
+                          BigText(text: 'Delicious Nigerian meal'),
+                          SizedBox(
+                            height: Dimensions.height10,
+                          ),
+                          SmallText(text: 'with nigerian characteristics'),
+                          SizedBox(
+                            height: Dimensions.height10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconAndText(
+                                  icon: Icons.circle_sharp,
+                                  text: 'Normal',
+                                  iconColor: AppColors.iconColor1),
+                              IconAndText(
+                                  icon: Icons.location_on,
+                                  text: '1.7km',
+                                  iconColor: AppColors.mainColor),
+                              IconAndText(
+                                  icon: Icons.access_time,
+                                  text: '32min',
+                                  iconColor: AppColors.iconColor2),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ],
