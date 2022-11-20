@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/utilities/colors.dart';
 import 'package:food_delivery_app/utilities/dimensions.dart';
+import 'package:food_delivery_app/widgets/app_column.dart';
 import 'package:food_delivery_app/widgets/big_text.dart';
 import 'package:food_delivery_app/widgets/icon_and_text.dart';
 import 'package:food_delivery_app/widgets/small_text.dart';
@@ -254,66 +255,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             child: Padding(
               padding: EdgeInsets.only(
                   top: Dimensions.height15, left: 15, right: 15, bottom: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BigText(
-                    text: 'Jollof Rice',
-                  ),
-                  SizedBox(height: Dimensions.height10),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Wrap(
-                          spacing: -2,
-                          children: List.generate(
-                              5,
-                              (index) => Icon(
-                                    Icons.star,
-                                    color: AppColors.mainColor,
-                                    size: Dimensions.iconSize15,
-                                  )),
-                        ),
-                        SizedBox(
-                          width: Dimensions.width10 / 2,
-                        ),
-                        SmallText(text: '4.5'),
-                        SizedBox(width: Dimensions.width10),
-                        SmallText(text: '1287'),
-                        SizedBox(width: 1),
-                        Expanded(
-                          child: SmallText(
-                            text: 'comments',
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: Dimensions.height20),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconAndText(
-                            icon: Icons.circle_sharp,
-                            text: 'Normal',
-                            iconColor: AppColors.iconColor1),
-                        IconAndText(
-                            icon: Icons.location_on,
-                            text: '1.7km',
-                            iconColor: AppColors.mainColor),
-                        IconAndText(
-                            icon: Icons.access_time,
-                            text: '32min',
-                            iconColor: AppColors.iconColor2),
-                      ],
-                    ),
-                  ),
-                ],
+              child: AppColumn(
+                text: 'Jollof Rice',
               ),
             ),
           ),
