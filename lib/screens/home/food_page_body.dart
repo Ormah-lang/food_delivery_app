@@ -151,7 +151,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                           SizedBox(
                             height: Dimensions.height10,
                           ),
-                          SmallText(text: 'with nigerian characteristics'),
+                          SmallText(
+                            text: 'with nigerian characteristics',
+                            maxLines: 1,
+                          ),
                           SizedBox(
                             height: Dimensions.height10,
                           ),

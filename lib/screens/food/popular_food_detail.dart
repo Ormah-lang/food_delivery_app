@@ -4,6 +4,7 @@ import 'package:food_delivery_app/utilities/dimensions.dart';
 import 'package:food_delivery_app/widgets/app_column.dart';
 import 'package:food_delivery_app/widgets/app_icon.dart';
 import 'package:food_delivery_app/widgets/big_text.dart';
+import 'package:food_delivery_app/widgets/expandable_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   const PopularFoodDetail({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class PopularFoodDetail extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          //food image
+          // background food image
           Positioned(
             left: 0,
             right: 0,
@@ -45,7 +46,7 @@ class PopularFoodDetail extends StatelessWidget {
                 ],
               )),
 
-          //food detail
+          //Introduction of food
           Positioned(
             bottom: 0,
             top: Dimensions.popularFoodImgSize - 20,
@@ -70,14 +71,24 @@ class PopularFoodDetail extends StatelessWidget {
                     text: 'Whole Chicken',
                   ),
                   SizedBox(height: Dimensions.height20),
-                  BigText(text: 'Introduce')
+                  BigText(text: 'Introduce'),
+                  SizedBox(
+                    height: Dimensions.height20,
+                  ),
+                  Expanded(
+                      child: SingleChildScrollView(
+                    child: ExpandableText(
+                        text:
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+                  ))
                 ],
               ),
             ),
           )
         ],
       ),
-      //  bottom bar
+
+      //  bottom  navigation bar
       bottomNavigationBar: Container(
         height: Dimensions.bottomHeightBar,
         padding: EdgeInsets.only(
@@ -95,6 +106,7 @@ class PopularFoodDetail extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            //first row for increasing the number of items in cart
             Container(
               padding: EdgeInsets.only(
                 top: Dimensions.height20,
@@ -126,6 +138,8 @@ class PopularFoodDetail extends StatelessWidget {
                 ],
               ),
             ),
+
+            //second row for adding items in cart
             Container(
               padding: EdgeInsets.only(
                 top: Dimensions.height20,
