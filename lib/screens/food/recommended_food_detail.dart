@@ -80,6 +80,41 @@ class RecommendedFoodDetail extends StatelessWidget {
           )
         ],
       ),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          //container for price increment
+          Container(
+            padding: EdgeInsets.only(
+              left: Dimensions.width20 * 2.5,
+              right: Dimensions.width20 * 2.5,
+              bottom: Dimensions.height10,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppIcon(
+                  iconSize: Dimensions.iconSize24,
+                  iconColor: Colors.white,
+                  backgroundColor: AppColors.mainColor,
+                  icon: Icons.remove,
+                ),
+                BigText(
+                  text: '\$12.88 ' + ' X ' + ' 0 ',
+                  color: AppColors.mainBlackColor,
+                  size: Dimensions.font26,
+                ),
+                AppIcon(
+                  iconSize: Dimensions.iconSize24,
+                  iconColor: Colors.white,
+                  backgroundColor: AppColors.mainColor,
+                  icon: Icons.add,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

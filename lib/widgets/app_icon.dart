@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/utilities/dimensions.dart';
 
 class AppIcon extends StatelessWidget {
   final IconData icon;
   final Color backgroundColor;
   final Color iconColor;
   final double size;
-  const AppIcon({
-    Key? key,
-    required this.icon,
-    this.iconColor = const Color(0xFFfcf4e4),
-    this.backgroundColor = const Color(0xFF756d54),
-    this.size = 40,
-  }) : super(key: key);
+  final double iconSize;
+  const AppIcon(
+      {Key? key,
+      required this.icon,
+      this.iconColor = const Color(0xFFfcf4e4),
+      this.backgroundColor = const Color(0xFF756d54),
+      this.size = 40,
+      this.iconSize = 15})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class AppIcon extends StatelessWidget {
       child: Icon(
         icon,
         color: iconColor,
-        size: Dimensions.iconSize15,
+        size: iconSize,
       ),
     );
   }
