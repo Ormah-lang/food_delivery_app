@@ -26,7 +26,7 @@ class PopularFoodDetail extends StatelessWidget {
                 color: AppColors.mainColor,
                 image: DecorationImage(
                   image: AssetImage(
-                    'assets/image/chicken.jpeg',
+                    'assets/images/chicken.jpeg',
                   ),
                 ),
               ),

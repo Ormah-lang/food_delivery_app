@@ -121,7 +121,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     borderRadius: BorderRadius.circular(Dimensions.radius20),
                     color: Colors.white,
                     image: DecorationImage(
-                        image: AssetImage('assets/image/jollof_rice.png')),
+                        image: AssetImage('assets/images/jollof_rice.png')),
                   ),
                 ),
 
@@ -224,7 +224,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 : const Color(0xFF9294cc),
             image: const DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage('assets/image/jollof_rice.png'),
+              image: AssetImage('assets/images/jollof_rice.png'),
             ),
           ),
         ),
